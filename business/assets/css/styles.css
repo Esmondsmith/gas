@@ -1,0 +1,246 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+/*NAVIGATION BAR START HERE*/
+/*NAVIGATION BAR START HERE*/
+/*
+h1{
+	color: green;
+}
+*/
+
+.nav-nav{
+	font-size: 16px;
+	margin-right:15px;
+	padding: 5px;
+}
+.nav-nav:hover {
+	color: #FF632D;
+	background-color: #F0F0F0;
+	box-shadow: 5px 5px;
+	color: #FACA38;
+}
+
+.nav-start{
+  overflow: visible;
+  background-color: whitesmoke;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 100;
+}
+
+
+/*NAVIGATION BAR END HERE
+
+
+/*CAROUSEL START HERE*/
+
+.carousel-text1{
+	position: absolute;
+	left: 100px;
+	top:100px;
+}
+
+.carousel-text1 .p1{
+	font-size: 30px;
+	color:#FF632D;
+}
+
+.carousel-text1 .p2{
+	font-family: arial;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+.carousel-text2{
+	position: absolute;
+	right: 100px;
+	top:100px;
+}
+
+
+/*order-alert*/
+.order-alert .col{
+	min-height: 200px;
+	margin-top: 40px;
+}
+
+.order-alert .dbl-brdr{
+	border-left: 10px double #FF632D;
+
+} /*CAROUSEL END HERE*/
+
+/*order-bar*/
+.div-vendor {
+	height: 100px;
+	background-color:#FF632D; 
+}
+
+.div-vendor1{
+	position: relative;
+	bottom: 100px;
+}
+
+.keep-on-cooking {
+	color: white;
+	font-size: 25px;
+	position: relative;
+	top: 30px;
+}
+.keep-on-cooking:hover{
+	font-size: 26px;
+
+}
+
+.ordernow{
+	text-decoration: none;
+	position: relative;
+	top: 40px;
+	margin-left: 10px;
+	background-color: white;
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+	padding:18px;
+	border-radius: 10%;
+}
+
+.ordernow:hover{
+	color:#FACA38;
+	box-shadow: 0 px 5px;
+}
+
+
+#p2{
+	font-size:35px;
+	color: #FF632D;
+	text-align: left;
+	margin: 2px;
+	font-weight: 650;	
+}
+
+.btn-br{
+	border: 4px solid #FF632D;
+	background-color: #FF632D;
+	width:25px;
+	margin-bottom:10px;
+}
+
+#p3{
+	color: black;
+	margin-bottom: 50px;
+}
+
+/*VENDOR*/
+.vendor h3{
+	font-size: 20px;
+	color: black;
+	margin: 30px 0px 10px 0px;
+}
+
+.vendor-reg {
+	background-color: #FF632D;
+	color: white;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: bold;
+	padding:18px;
+	border-radius: 10%;
+}
+.vendor-reg:hover {
+	background-color: #FF632D;
+	color: #FACA38;
+}
+
+/*MODAL SECTION*/
+.modal-h1,.modal-header{
+ justify-content: center;
+}
+
+
+
+/*FOOTER START HERE*/
+
+.foot-container{
+/*background-color: #FF6804;*/
+background-color: #FF632D;
+   width:100%;
+   margin-top: 150px;
+}
+
+.safety-post{
+margin-top: 100px;
+}
+
+/* .to-top{
+	position: relative;
+	left: 95%;
+} */
+
+.foot-li a{
+	color: white;
+	font-weight: bold;
+}
+
+.fa-socials:hover{
+	color:white;
+}
+
+
+/*VENDOR PAGE START HERE
+VENDOR REGISTRATION FORM*/
+
+.form-vendor-reg{
+	background-color: #D1D1D1;
+}
+
+.vendor-img {
+	box-shadow: 5px 3px 5px 3px;
+}
+
+.divside,.col-3{
+	border: 2px solid red;
+	min-height: 100px;
+	min-width:20%;
+}
+
+.vendor-h1{
+	position: relative;
+	bottom: 200px;
+	color: white;
+	justify-content: center;
+	}
+
+.vendor-btnFAQs{
+	background-color: #FF632D; 
+	font-weight: bold;
+}
+
+.vendor-class1{
+	font-size: 35;
+	color:#FF632D;
+	font-family: sans-serif;
+}
+
+/* BUSINESS PROFILE PICTURE CHANGE */
+li.biz-pro-pic{
+	color:#FF632D !important;
+	font-weight: 400;
+}
+
+.deletebtn{
+	background-color:red;
+	border: red;
+}
+
+
+
+
+
+
+/*LogIn*/
+
+

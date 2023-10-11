@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 require_once "../classes/Business.php";
 
@@ -12,7 +13,8 @@ if($_POST){
             //validation below to make sure you upload a file
             $file_error = $profile["error"];
             if($file_error > 0){
-                echo "Please upload a valid file";
+                $_SESSION['biz_reg_error'] = "Please upload a valid file";
+                header("location:../biz_uploadphoto.php");
                 exit();
             }
           

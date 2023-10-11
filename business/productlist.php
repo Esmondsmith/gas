@@ -193,12 +193,12 @@ $product = $prod->fetch_all_products();
                             </div>
                             </div>
                             <!-- Add product form start here -->
-                            <div class="col-md-9 mb-4">
-                            <div class="card mb-4">
+                            <div class="col-md-12 mb-4">
+                            <div class="card mb-4 ">
                             <div class="card-header py-3">
                                 <h5 class="mb-0">Product Lists</h5>
                             </div>
-                            <div class="card-body" style="min-height:200px">
+                            <div class="card-body" style="min-height:200px;">
                                 <a href="add_product.php" class="btn btn-success">Add New Product</a>
                         <table class="table table-striped">
                         <thead>
@@ -206,6 +206,7 @@ $product = $prod->fetch_all_products();
                                 <strong>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Description</th>  
                             <th scope="col">Delete &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Edit</th>
                                 </strong>
@@ -218,7 +219,8 @@ $product = $prod->fetch_all_products();
                             <tr>
                             <th scope="row"><?php echo $num++; ?></th>
                             <!-- To make the fieds heading dynamic -->
-                            <td><?php echo $prodt['product_name']; ?></td>    
+                            <td><?php echo $prodt['product_name']; ?></td>   
+                            <td><?php echo $prodt['product_price']; ?></td> 
                             <td><?php echo $prodt['product_desc']; ?></td>
                             <td style="display:flex";>
                                 
@@ -228,10 +230,6 @@ $product = $prod->fetch_all_products();
                             </form>
                                 <!-- Below, we are using query string to pass the id of book while editing -->
                                 <a href="editproduct.php?id=<?php echo $prodt['product_id']; ?>" class='btn btn-md btn-success mx-3'><i class='fa fa-edit'>&nbsp</i> Edit</a>
-                                &nbsp;&nbsp;
-                                <a href='#' class='btn btn-sm btn-info'><i class='fa fa-list'></i> Details</a>
-                                &nbsp;&nbsp;
-                                
                             </td>
                             </tr>
 

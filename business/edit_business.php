@@ -5,6 +5,19 @@ error_reporting(E_ALL);
 require_once "classes/Business.php";
 require_once "partials/navbar.php";
 
+//These are used for the select dropdown
+require_once "classes/Type.php";
+$type = new Type();
+$biz_type = $type->fetch_business_type();
+include_once "classes/Address.php";
+$sta = new Address();
+$states = $sta->fetch_all_states();
+include_once "classes/Local.php";
+$lg = new Local();
+$locals = $lg -> fetch_local_govt();
+
+
+//This is used to fetch out the Business details from DB
 $biz = null;  // Initialize $biz to null
 if(isset($_SESSION['biz_id'])){
   $biz_id = $_SESSION['biz_id'];
@@ -13,9 +26,23 @@ if(isset($_SESSION['biz_id'])){
 }
 
 
-//This line of code was used to generate the state name instead of its id.
-$bizz = new Business();
-    // $buss = $bizz->get_state_name($biz_id);
+//This is used to retain the old details before editing
+if(isset($_GET['id'])){
+    $biz_id = $_GET['id'];
+    if(!is_numeric($biz_id)){
+      header("location:business_profile.php");
+      exit();
+    }
+    $bussiness = new Business();
+    $biz = $bussiness->get_buiness($biz_id);
+    // print_r($biz);
+    //if no biz exist with the id they entered, redirect them away.
+    if(!$biz){
+      header("location:business_profile.php");
+      exit();
+    }
+  } 
+
 
 ?>
 
@@ -139,7 +166,7 @@ $bizz = new Business();
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="business_profile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -183,116 +210,70 @@ $bizz = new Business();
                         
                     <!-- Content Row -->
 
-                    <div class="row">
-                         <!-- Business Details Displayed -->
-                        <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"></h5>
-                            </div>
-                            <h2 class="mb-1 text-center">
-                            <strong style="color:#FF632D;"><?php
-                                    if ($biz !== null) {
-                                        echo $biz['biz_name'];
-                                    }
-                                ?></strong> Business Details
-                            </h2>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><strong>Business Type:</strong></h5>
-                            <small class="text-body-secondary">Edit</small>
-                            </div>
-                            <p class="mb-1">
-                            <?php
-                                if ($biz !== null) {
-                                    echo $bizz->get_business_type($biz['biz_type_id']);
-                                }
-                            ?>
-                            </p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><strong>Email:</strong></h5>
-                            <small class="text-body-secondary">Edit</small>
-                            </div>
-                            <p class="mb-1">
-                            <?php
-                                if ($biz !== null) {
-                                    echo $biz['biz_email'];
-                                }
-                            ?>
-                            </p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><strong>Phone:</strong></h5>
-                            <small class="text-body-secondary">Edit</small>
-                            </div>
-                            <p class="mb-1">
-                            <?php
-                                if ($biz !== null) {
-                                    echo $biz['biz_phone'];
-                                }
-                            ?>
-                            </p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><strong>Address:</strong></h5>
-                            <small class="text-body-secondary">Edit</small>
-                            </div>
-                            <p class="mb-1">
-                            <?php
-                                if ($biz !== null) {
-                                    echo $biz['biz_address'];
-                                }
-                            ?>
-                            </p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><strong>City:</strong></h5>
-                            <small class="text-body-secondary">Edit</small>
-                            </div>
-                            <p class="mb-1">
-                            <?php
-                                if ($biz !== null) {
-                                    echo $biz['biz_city'];
-                                }
-                            ?>
-                            </p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><strong>State:</strong></h5>
-                            <small class="text-body-secondary">Edit</small>
-                            </div>
-                            <p class="mb-1">
-                            <?php
-                                if ($biz !== null) {
-                                    echo $bizz->get_state_name($biz['biz_state_id']);
-                                }
-                            ?>
-                            </p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><strong>Registered Date:</strong></h5>
-                            </div>
-                            <p class="mb-1">
-                            <?php
-                                if ($biz !== null) {
-                                    echo $biz['date_registered'];
-                                }
-                            ?>
-                            </p>
-                        </a>
+                    <!-- Business update form starts here -->
+            <form action="process/edit_businessprocess.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate="">
+                    <div class="row g-3">
+                    <div class="col-md-6">
+                    <label for="biz-type" class="form-label"><b>Business Type</b></label>
+                    <!-- select for business type start-->
+                    <select id="biz-type" name="biz_type" class="form-select">
+                    <?php foreach($biz_type as $type){ ?>
+                        <option value="<?php echo $type['type_id']; ?>"> <?php echo $type['type_name']; ?> </option>
+                        <?php  }?>
+                    </select> 
+                    <!-- select for business type end-->
+                    </div>
+                    <div class="col-sm-6">
+                    <label for="biz-name" class="form-label"><b>Business Name</b></label>
+                    <input type="text" value="<?php echo $biz['biz_name']; ?>" name="biz_name" class="form-control" id="biz-name">
+                    <div class="invalid-feedback">
+                        Valid Business name is required.
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                    <label for="biz-cert" class="form-label"><b>Business Reg. Certificate</b></label>
+                    CAC Cert. Or Any Valid ID
+                    <input type="file" name="biz_doc" class="form-control" id="biz-cert">
+                    </div>
+                    <div class="col-md-6">
+                    <label for="biz-phone" class="form-label"><b>Contact Number</b></label>
+                    <input type="number" value="<?php echo $biz['biz_phone']; ?>" name="biz_phone" class="form-control" id="biz-phone">
+                    </div>
+                    <div class="col-12">
+                    <label for="address" class="form-label"><strong>Address</strong></label>
+                    <input type="text" class="form-control" value="<?php echo $biz['biz_address']; ?>" name="biz_address" id="address" placeholder="Street/Building number">
+                    </div>
+                    <div class="col-12">
+                    <label for="city" class="form-label"><strong>City</strong></label>
+                    <input type="text" value="<?php echo $biz['biz_city']; ?>" name="biz_city" class="form-control" id="city" placeholder="City Name">
+                    </div>
+                    <!-- select for state start-->
+                    <div class="col-sm-6">
+                    <label value="">Select State</label>
+                    <select class="form-control" name="state" id="stateid">                          
+                    <?php foreach($states as $anything){?>
+                    <option value="<?php echo $anything["state_id"]; ?>"><?php echo $anything["state_name"]; ?></option>
+                    <?php } ?>
+                    </select>
+                    <!-- select for state end-->
+                </div>               
+                <div class="col-sm-6">   
+                    <label value="">Select L.G.A</label>                     
+                    <select class="form-control" name="lga" id="lgaid">
+                    <?php foreach($locals as $lg){ ?>
+                        <option value="<?php echo $lg['local_govt_id']; ?>"> <?php echo $lg['local_govt_name']; ?> </option>
+                    <?php  }?>
+                    </select> 
+                </div>
+                </div>
+                <input type="hidden" name="biz_id" value="<?php echo $biz['biz_id'];  ?>">
+                <hr class="my-3">
+                <button name="updatebiz_btn" class="w-27 btn mb-2 btn-primary btn-lg" type="submit">Update</button>
+            </form>
+          <!-- Business update form ends here -->
                         <div class="row mt-4">
                             <div class="col"> 
-                                <a href="#" class="mr-5">Change Password</a> 
-                                <a href="#" class="mr-5">Change Email</a> 
-                                <a href="edit_business.php">Edit Profile</a> 
+                                <a href="business_profile.php"> << Back </a> 
                             </div>
                         </div>
 
@@ -343,6 +324,23 @@ $bizz = new Business();
             </div>
         </div>
     </div>
+
+    <script src="assets/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+        $("#stateid").change(function(){
+            var stateid = $("#stateid").val();
+            // alert(stateid);
+            $("#lgaid").load("process/lga_process.php", {"statekey": stateid}, function(response, status, xhr){
+            });
+
+        });
+                
+        })
+
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>

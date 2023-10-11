@@ -92,7 +92,7 @@
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
-                <a href="user_profile.php"><button class="rounded-circle border-0" id="sidebarToggle"></button></a>
+                <a href="business_profile.php"><button class="rounded-circle border-0" id="sidebarToggle"></button></a>
             </div>
 
         </ul>
@@ -177,6 +177,11 @@
                         <!-- upload form -->
                             <form action="process/biz_uploadprocess.php" method="post" enctype="multipart/form-data">
                                 <label class="my-2">Change profile picture</label>
+                                <!-- Picking error message saved in session -->
+                                <?php if(isset($_SESSION['biz_reg_error'])){ ?>
+                                    <p class="text-danger text-center bg-white"><?php echo $_SESSION['biz_reg_error']; ?></p> 
+                                    <?php unset($_SESSION['biz_reg_error']); ?>
+                                <?php } ?>
                                 <input type="file" id="uploadform" name="profile" class="form-control my-3">
                                 <input type="hidden" name="biz_id" value="<?php echo $biz_id ?>">
                                 <button class="btn btn-primary my-2" name="btnupload">Change</button>

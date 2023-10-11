@@ -5,7 +5,7 @@ include_once "../classes/Product.php";
 
     if($_POST){
 
-        if(isset($_POST[''])){
+        if(isset($_POST['addprod-btn'])){
             //These are always passed as argument
             $product_name = $_POST["prod_name"];
             $product_price = $_POST["prod_price"];
@@ -13,10 +13,8 @@ include_once "../classes/Product.php";
             $product_id = $_POST["product_id"];
 
 
-            //VALIDATION
-            //Connect with the class method
-            $bk = new Book();
-            $updateproduct = $bk->update_product($product_name, $product_price, $product_desc, $product_id);
+            $prod = new Product();
+            $updateproduct = $prod->update_product($product_name, $product_price, $product_desc, $product_id);
 
             if($updateproduct){
                 header("location:../productlist.php");

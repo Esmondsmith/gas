@@ -154,8 +154,8 @@ exit();
                             <h4 style="color: #4676F7; font-weight:bold;">UPDATE PRODUCT DETAILS</h4>
                             </div>
                             </div>
-                            <!-- Add product form start here -->
-                    <form action="process.php" method="post" enctype="multipart/form-data">
+                            <!-- Edit product form start here -->
+                    <form action="process/editprod_process.php" method="post" enctype="multipart/form-data">
                         <div class="row mb-4">
                             <div class="col">
                             <div class="form-outline">
@@ -180,6 +180,7 @@ exit();
                             <button type="submit" name="addprod-btn" class="btn btn-primary btn-lg">Update</button>
                         </div>
                     </form>
+                    <!-- Edit product form end here -->
                     </div>
 
                         <!-- Pie Chart -->

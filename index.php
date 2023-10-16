@@ -29,12 +29,20 @@
             <li class="nav-item">
               <a class="nav-link" href="about.php"><b class="nav-nav">About Us</b></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="user_register.php"><b class="nav-nav">Sign Up</b></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="user_login.php"><img src="icons/icon.png" class="mb-2"><b class="nav-nav">Log In</b></a>
-            </li>
+            <div class="nav-item dropdown" >
+              <a class="nav-link" data-bs-toggle="dropdown" href="#"><b class="nav-nav dropdown-toggle">Sign Up</b></a>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item"><a href="user_register.php">As a User</a></button></li>
+                <li><button class="dropdown-item"><a href="business/business_reg.php">As a Business</a></button></li>
+              </ul>
+            </div>
+            <div class="nav-item dropdown" >
+              <a class="nav-link" data-bs-toggle="dropdown" href="#"><img src="icons/icon.png" class="mb-2"><b class="nav-nav dropdown-toggle">Log In</b></a>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item"><a href="user_login.php">User Login</a></button></li>
+                <li><button class="dropdown-item"><a href="business/business_login.php">Business Login</a></button></li>
+              </ul>
+            </div>
             <li class="nav-item">
               <a class="nav-link" href="vendors.php"><b class="nav-nav">Vendors</b></a>
             </li>
@@ -74,36 +82,35 @@
 
 <!-- ORDER ALERT START-->
     
-<div class="container ">
-    <div class="row d-flex div-vendor mb-5">
-        <div class="col-md-6">
-            <h2 class= "keep-on-cooking">KEEP ON COOKING WITH GAZEASY</h2>
-        </div>
-        <div class="col-md-6"><a href="#" class="ordernow">
-            <strong>ORDER NOW</strong></a>
-        </div>
-    </div>
-    <div class="row order-alert d-flex mt-5">
-        <div class="col col">
-            <img src="images/del1.jpg" width="500">
-        </div>
-        <div class="col col dbl-brdr">
-            <div class="vendor">
-                <h3>Looking to expand your customer base? </h3>
-                <p id="p2">BECOME A VENDOR TODAY.</p>
-                <button type="button" class="btn-br"></button>
-                <button type="button" class="btn-br"></button>
-                <button type="button" class="btn-br"></button>
-                <button type="button" class="btn-br"></button>
-                <button type="button" class="btn-br"></button>
-                <p id="p3">Want to grow your business? Tap into our vast customer base and effortlessly reach new audiences, by expanding your business beyond traditional boundaries. Become a Vendor on GazEasy and get all these and more. Register on GazEazy as a vendor and unlock a world of possibilities for your business. Experience growth, convenience, and success.</p>
-                <a href="business/business_reg.php" class="vendor-reg">REGISTER NOW</a>
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="container ">
+      <div class="row d-flex div-vendor mb-5">
+          <div class="col-md-6">
+              <h2 class= "keep-on-cooking">KEEP ON COOKING WITH GAZEASY</h2>
+          </div>
+          <div class="col-md-6"><a href="#" class="ordernow">
+              <strong>ORDER NOW</strong></a>
+          </div>
+      </div>
+      <div class="row order-alert d-flex mt-5">
+          <div class="col col">
+              <img src="images/del1.jpg" width="500">
+          </div>
+          <div class="col col dbl-brdr">
+              <div class="vendor">
+                  <h3>Looking to expand your customer base? </h3>
+                  <p id="p2">BECOME A VENDOR TODAY.</p>
+                  <button type="button" class="btn-br"></button>
+                  <button type="button" class="btn-br"></button>
+                  <button type="button" class="btn-br"></button>
+                  <button type="button" class="btn-br"></button>
+                  <button type="button" class="btn-br"></button>
+                  <p id="p3">Want to grow your business? Tap into our vast customer base and effortlessly reach new audiences, by expanding your business beyond traditional boundaries. Become a Vendor on GazEasy and get all these and more. Register on GazEazy as a vendor and unlock a world of possibilities for your business. Experience growth, convenience, and success.</p>
+                  <a href="business/business_reg.php" class="vendor-reg">REGISTER NOW</a>
+              </div>
+          </div>
+      </div>
+  </div>
 
-  <button>I am here</button>
 
  <div class="row my-5 container-fluid">
       <div class="col safety-post col-12 text-center">

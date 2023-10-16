@@ -4,23 +4,25 @@ require_once "partials/navbar.php";
 require_once "classes/Business.php";
 require_once "classes/Product.php";
 
+
 $business = null;
 if(isset($_SESSION['biz_id'])){
   $biz_id = $_SESSION['biz_id'];
   $biz2 = new Business();
   $business = $biz2 -> fetch_business_details($biz_id);
-
-//   echo "<pre>";
-//   print_r($_SESSION);
-//   echo "</pre>";
 }
 
-// $prodt = new Product();
-// $product = $prodt->fetch_biz_products($product_biz_id);
 
-// require_once "classes/Product.php";
+require_once "classes/Category.php";
+$cat = new Category();
+
+
+// $prod = new Product();
+// $product = $prod->fetch_biz_products($product_biz_id);
+
 $prod = new Product();
 $product = $prod->fetch_all_products();
+
 
 ?>
 
@@ -186,7 +188,7 @@ $product = $prod->fetch_all_products();
                     <div class="row">
 
                         <!-- Form Area -->
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-10 col-lg-7">
                             <div class="card mb-4">
                             <div class="card-header py-3">
                             <h4 style="color: #4676F7; font-weight:bold;">PRODUCT LIST</h4>
@@ -207,8 +209,9 @@ $product = $prod->fetch_all_products();
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Description</th>  
-                            <th scope="col">Delete &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Edit</th>
+                            <th scope="col">Date</th>
                                 </strong>
                             </tr>
                         </thead>
@@ -218,18 +221,20 @@ $product = $prod->fetch_all_products();
                         <?php foreach($product as $prodt){ ?>
                             <tr>
                             <th scope="row"><?php echo $num++; ?></th>
-                            <!-- To make the fieds heading dynamic -->
+                            <!-- To make the fieds dynamic -->
                             <td><?php echo $prodt['product_name']; ?></td>   
-                            <td><?php echo $prodt['product_price']; ?></td> 
+                            <td>&#8358;<?php echo $prodt['product_price']; ?></td> 
+                            <td><?php echo $cat->get_category_name($prodt['product_cat_id']); ?></td> 
                             <td><?php echo $prodt['product_desc']; ?></td>
+                            <td><?php echo $prodt['date_added']; ?></td>
                             <td style="display:flex";>
                                 
                             <form action="process/deleteprod_process.php" method="post">
                                 <input type="hidden" name="product_id" value="<?php echo $prodt['product_id']; ?>">
-                                <button type="submit" style="background-color:red; border: red; padding: 7px; border-radius: 6%; color: white;" classs=" btn-md btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete</button>
+                                <button type="submit" style="background-color:red; border: red; padding: 7px; border-radius: 6%; color: white;" classs=" btn-sm btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete</button>
                             </form>
                                 <!-- Below, we are using query string to pass the id of book while editing -->
-                                <a href="editproduct.php?id=<?php echo $prodt['product_id']; ?>" class='btn btn-md btn-success mx-3'><i class='fa fa-edit'>&nbsp</i> Edit</a>
+                                <a href="editproduct.php?id=<?php echo $prodt['product_id']; ?>" class='btn btn-sm btn-success mx-3'><i class='fa fa-edit'>&nbsp</i> Edit</a>
                             </td>
                             </tr>
 
@@ -242,43 +247,6 @@ $product = $prod->fetch_all_products();
                             </div>
                         </div>
                     </div>
-
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Product Monitoring</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Large Quantity
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Few Quantity
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Out of stock
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-            <!-- End of Main Content -->
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">

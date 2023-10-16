@@ -3,6 +3,7 @@ session_start();
 require_once "partials/navbar.php";
 require_once "classes/Product.php";
 require_once "classes/Business.php";
+require_once "classes/Category.php";
 
 if(isset($_SESSION['biz_id'])){
     $biz_id = $_SESSION['biz_id'];
@@ -11,6 +12,8 @@ if(isset($_SESSION['biz_id'])){
     $biz = $bz -> fetch_business_details($biz_id);
 }
 
+$cat = new Category();
+$categories = $cat->fetch_category();
 
 if(isset($_GET['id'])){
     $product_id = $_GET['id']; 
@@ -167,6 +170,26 @@ exit();
                             <div class="form-outline">
                                 <input type="number" id="form7Example1" name="prod_price" class="form-control" value="<?php echo $product['product_price']; ?>"/>
                                 <label class="form-label" for="form7Example1">Product Price</label>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                            <div class="form-outline">
+                                <input type="file" id="cover" name="prod_image" class="form-control" />
+                                <label class="form-label" for="categ">Product Image</label>
+                            </div>
+                            </div>
+                            <div class="col">
+                            <div class="form-outline">
+                                <select class="form-control" name="prod_category" id="categ">
+                                <!-- Loop through category -->
+                                <?php foreach($categories as $cat){ ?>
+                                <option value="<?php echo $cat['cat_id']; ?>"> <?php echo $cat['cat_name']; ?> </option>
+                                <?php  }?>
+
+                                </select>
+                                <label class="form-label" for="form7Example1">Product Category</label>
                             </div>
                             </div>
                         </div>

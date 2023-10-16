@@ -172,6 +172,7 @@ $states = $sta->fetch_all_states();
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="user_assets/bootstrap/js/bootstrap.bundle.js" crossorigin="anonymous"></script> 
 
 </body>
 

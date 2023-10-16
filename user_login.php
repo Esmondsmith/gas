@@ -32,6 +32,8 @@ require_once "partials/navbar.php";
     <link href="user_assets/css/styles.css" rel="stylesheet" type="text/css">
     <link href="user_assets/css/styles2.css" rel="stylesheet" type="text/css">
     <link href="user_assets/animate.css" rel="stylesheet" type="text/css">
+    <link  href="user_assets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
+
 
 </head>
 
@@ -70,8 +72,8 @@ require_once "partials/navbar.php";
                                         <div class="form-group">
                                             <input type="email" name="login_email" class="form-control form-control-user" id="email" placeholder="Enter Email Address...">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" name="login_password" class="form-control" id="pass" placeholder="Enter Password">
+                                        <div class="form-group d-flex">
+                                            <input type="password" name="login_password" class="form-control w-80" id="pass1" placeholder="Enter Password"><button class="btn btn-info" type="button" id="btn13"><i class="fa-sharp fa-solid fa-eye"></i></button>                                        
                                         </div>
                                         <button type="submit" name="login_btn" class="btn btn-primary btn-block mb-4">
                                             Login</button>
@@ -100,6 +102,28 @@ require_once "partials/navbar.php";
         </div>
     </div>
 
+    <script src="user_assets/bootstrap/js/bootstrap.bundle.js" crossorigin="anonymous"></script> 
+
+    <script src="user_assets/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+        $('#btn13').click(function(){
+        //   var name =  $('name1').val()
+          var pwd =  $('#pass1').attr('type')
+            if (pwd == 'password'){
+                $('#pass1').attr('type', 'text')
+                $('#btn13').html('<i class="fa-sharp fa-solid fa-eye-slash"></i>')
+      
+            } else{
+                $('#pass1').attr('type', 'password')
+                $('#btn13').html(' <i class="fa-sharp fa-solid fa-eye"></i>')
+               
+            }
+        })
+    })
+
+	</script>	
 
 </body>
 </html>

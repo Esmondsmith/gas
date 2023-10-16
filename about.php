@@ -50,107 +50,6 @@
     </div> <!-- NAVBAR END HERE -->
 
 
-    <!-- MODAL START -->
-
-<div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="secondModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-1bg">
-              <div class="modal-header">
-                 <div class="d-block modal-h1">
-                    <h1 class="modal-title fs-5 text-center">Login to GazEasy</h1>
-                    <p class="modal-para">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#modalsign-up">Sign Up</a></p>
-                 </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="user-email" class="col-form-label">Email:</label>
-                    <input type="email" class="form-control" id="user-email-login">
-                  </div>
-                  <div class="mb-3">
-                    <label for="user-pass" class="col-form-label">Password:</label>
-                    <input type="password" class="form-control" id="user-pass-login">
-                    <button id="btnpass-login"><i class="fa-sharp fa-solid fa-eye"></i></button>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Login</button>
-              </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="modal fade" id="modalsign-up" tabindex="-1" aria-labelledby="secondModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modal-1bg">
-              <div class="modal-header">
-                 <div class="d-block modal-h1">
-                    <h1 class="modal-title fs-5 text-center">Sign up to GazEasy</h1>
-                    <p class="modal-para">Got an account already?<a href="#" data-bs-toggle="modal" data-bs-target="#modal-login">Log in</a></p>
-                 </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label for="user-firstname" class="col-form-label">First Name:</label>
-                    <input type="text" name="firstname" class="form-control" id="user-firstname" autofocus>
-                  </div>
-                  <div class="mb-3">
-                    <label for="user-lastname" class="col-form-label">Last Name:</label>
-                    <input type="text" name="lastname" class="form-control" id="user-lastname" autofocus>
-                  </div>
-                  <div class="mb-3">
-                    <label for="user-email" class="col-form-label">Email:</label>
-                    <input type="email" name="email" class="form-control" id="user-email-signup">
-                  </div>
-                  <div class="mb-3">
-                    <label for="user-pass" class="col-form-label">Password:</label>
-                    <input type="password" name="password" class="form-control" id="user-pass-signup">
-                    <button id="btnpass-signup"><i class="fa-sharp fa-solid fa-eye"></i></button>
-                  </div>
-                  <div class="mb-3">
-                    <label for="user-phone" class="col-form-label">Phone Number:</label>
-                    <input type="number" name="phone" class="form-control" id="user-phone">
-                  </div>
-                  <div class="mb-3">
-                    <label for="user-address" class="col-form-label">Address:</label>
-                    <input type="text" name="address" class="form-control" id="user-address">
-                  </div>
-                  <select >
-                      <option>Lagos State</option>
-                  </select>
-                  <select> 
-                      <option>Select LGA</option>
-                      <option>Ikeja</option>
-                      <option>Lagos Mainland</option>
-                      <option>Alimosho</option>
-                      <option>Ikorodu</option>
-                      <option>Lagos Island</option>
-                      <option>Surulere</option>
-                      <option>Eti-Osa</option>
-                      <option>Apapa</option>
-                      <option>Oshodi-Isolo</option>
-                      <option>Mushin</option>
-                  </select>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Sign up</button>
-              </div>
-            </div>
-        </div>
-    </div>
-        <!-- MODAL END -->
-
-
       <div class="container-fluid">
         <div class="row">
         <div >
@@ -189,8 +88,8 @@
         </div>
     </div>
     </div>
-     <div class="row my-5 container-fluid">
-    <div class="col safety-post col-12 text-center">
+    <div class="row my-5 container-fluid">
+      <div class="col safety-post col-12 text-center">
         <h1 class="vendor-benefit">Some of our registered <span style="color:#FF632D;"><u>Vendor</u></span></h1>
       </div>
     </div> 

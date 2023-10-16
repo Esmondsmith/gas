@@ -67,6 +67,7 @@ $(document).ready(function(){
 
 </script>
 
-<script src="bootstrap/js/bootstrap.bundle.js"></script>    
+<script src="assets/bootstrap/js/bootstrap.bundle.js" crossorigin="anonymous"></script> 
+
 </body>
 </html>

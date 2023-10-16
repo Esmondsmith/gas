@@ -7,8 +7,8 @@ require_once "../classes/Product.php";
 
         $prod_name = $_POST['prod_name'];
         $prod_price = $_POST['prod_price'];
-        $prod_cat_id = $_POST['prod_category'];
         $prod_desc = $_POST['prod_desc'];
+        $prod_cat_id = $_POST['prod_category'];
         $prod_biz_id = $_POST['prod_biz'];
 
         $prod_image = $_FILES['prod_image'];
@@ -52,7 +52,7 @@ require_once "../classes/Product.php";
 
         if($fileuploaded){
             $prod = new Product();
-            $response = $prod->add_product($prod_name, $prod_price, $prod_cat_id, $prod_biz_id, $prod_desc, $final_filename);
+            $response = $prod->add_product($prod_name, $prod_price, $prod_desc, $final_filename, $prod_cat_id, $prod_biz_id);
             // echo $response;
             if($response){
                 // echo "Product added successfully";

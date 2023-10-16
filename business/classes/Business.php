@@ -214,7 +214,7 @@ error_reporting(E_ALL);
             // echo $biz2 -> biz_login("monday@gmail.com", "monday123");
 
             // $biz = new Business();
-            // echo $biz->register_business("Marco ltd", "emarco@gmail.com", "09362415362", "marc1234", "marc.png", "allen ave, 2nd building", "Ikeja", 2, 5, 3);
+            // echo $biz->register_business("Marco Gas LTD", "marco@gmail.com", "09362415362", "marco1234", "marc.png", "allen ave, 2nd building", "Ikeja", 2, 5, 3);
         
     
 ?>

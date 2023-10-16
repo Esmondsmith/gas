@@ -9,6 +9,7 @@
     <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
     <link href="assets/animate.css" rel="stylesheet" type="text/css">
+    <link href="user_assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 
       <!-- Custom fonts for this template-->
       <link href="user_assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,10 +40,14 @@
             <li class="nav-item">
               <a class="nav-link" href="about.php"><b class="nav-nav">About Us</b></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="user_register.php"><b class="nav-nav">Sign Up</b></a>
-            </li>
+            <div class="nav-item dropdown" >
+              <a class="nav-link" data-bs-toggle="dropdown" href="#"><b class="nav-nav dropdown-toggle">Sign Up</b></a>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item"><a href="user_register.php">As a User</a></button></li>
+                <li><button class="dropdown-item"><a href="business/business_reg.php">As a Business</a></button></li>
               </ul>
+            </div>
+            </ul>
             </li>
           </ul>
         </div>

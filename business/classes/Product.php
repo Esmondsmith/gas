@@ -11,11 +11,27 @@ class Product extends Db{
             $stmt->bindparam(2, $product_price, PDO::PARAM_INT);
             $stmt->bindparam(3, $product_desc, PDO::PARAM_STR);
             $stmt->bindparam(4, $product_image, PDO::PARAM_STR);
-            $stmt->bindparam(5, $product_cat_name, PDO::PARAM_INT);
-            $stmt->bindparam(6, $product_biz_name, PDO::PARAM_INT);
+            $stmt->bindparam(5, $product_cat_id, PDO::PARAM_INT);
+            $stmt->bindparam(6, $product_biz_id, PDO::PARAM_INT);
             
             $result = $stmt->execute();
             if($result){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function add_order($order_name, $order_address, $order_phone, $order_qty, $order_product_id){
+            $sql = "INSERT INTO orders (order_custname, order_custaddress, order_qty, order_custphone, order_product_id) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this -> connect()->prepare($sql);
+            $stmt->bindparam(1, $order_name, PDO::PARAM_STR);
+            $stmt->bindparam(2, $order_address, PDO::PARAM_STR);
+            $stmt->bindparam(3, $order_phone, PDO::PARAM_STR);
+            $stmt->bindparam(4, $order_qty, PDO::PARAM_STR);
+            $stmt->bindparam(5, $order_product_id, PDO::PARAM_INT);
+            $response = $stmt->execute();
+            if($response){
                 return true;
             } else {
                 return false;
@@ -43,6 +59,7 @@ class Product extends Db{
             return $product;
         //New method to target product biz id
         }
+
 
 
         //Product details method
@@ -86,12 +103,29 @@ class Product extends Db{
 
         }
 
+        public function get_product_info($product_id){
+            $sql = "SELECT * FROM  products WHERE product_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindparam(1, $product_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $count = $stmt->rowCount(); 
+                if($count < 1){
+                    return false;
+                    exit();
+                } else {
+                    $prod = $stmt->fetch(PDO::FETCH_ASSOC);
+                    return $prod;
+                }
+        }
+
 
 }
 //class end!
 
             // $prd = new Product();
-            // echo $prd->add_product("cookinggas", 4200, "gas for all", "gas.png", 3, 1);
+            // echo $prd->add_order("charles doe", "gas palace 4th street for all homes", 3, 948575784, 8);
 
 
 ?>
+
+

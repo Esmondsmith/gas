@@ -116,11 +116,10 @@ if(isset($_SESSION['user_id'])){
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php //echo $user['user_fullname']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user['user_fullname']; ?></span>
                                 <img src="uploads/<?php 
                                 
                                 if ($user !== null) {
-                                    // Access $biz['biz_fullname'] and $biz['user_img'] safely
                                     echo $user['user_img'];
                                 }
                                 
@@ -154,8 +153,8 @@ if(isset($_SESSION['user_id'])){
                             <div class="card shadow mb-4">
                                 <div class="col-md-9 mb-4" style="background-color:#FF632D;">
                                 <div class="card mb-4" >
-                                <div class="card-header py-3" style="background-color:#4e73df;"> 
-                                <div class="card" style="width: 28rem; height:300px;">
+                                <div class="card-header py-5" style="background-color:#4e73df;"> 
+                                <div class="card" style="width: 28rem; height:350px;">
                             <div class="card-body">
                                 <h5 class="card-title mb-4"><strong style="color:#FF632D;"><?php
                                     if ($user !== null) {
@@ -165,16 +164,29 @@ if(isset($_SESSION['user_id'])){
                                 ?></strong></h5>
                                 <h6 class="card-text mb-4"><strong>Email:</strong> <?php
                                     if ($user !== null) {
-                                        // Access $biz['biz_name'] and $biz['biz_img'] safely
                                         echo $user['user_email'];
                                     }
                                 ?></h5></h6>
                                 <p class="card-text"><strong>Phone:</strong> <?php
                                     if ($user !== null) {
-                                        // Access $biz['biz_name'] and $biz['biz_img'] safely
                                         echo $user['user_phone'];
                                     }
                                 ?></h5></p>
+                                <p class="card-text"><strong>Address:</strong> <?php
+                                    if ($user !== null) {
+                                        echo $user['user_address'];
+                                    }
+                                ?></h5></p>
+                                <p class="card-text"><strong>Town/City:</strong> <?php
+                                    if ($user !== null) {
+                                        echo $user['user_city'];
+                                    }
+                                ?></h5></p>
+                                <!-- <p class="card-text"><strong>State of Residence:</strong> <?php
+                                    //if ($user !== null) {
+                                        //echo $user['user_state_id'];
+                                    //}
+                                ?></h5></p> -->
                                 <p class="card-text"><strong>Date joined:</strong> <?php
                                     if ($user !== null) {
                                         // Access $biz['biz_name'] and $biz['biz_img'] safely
@@ -184,7 +196,7 @@ if(isset($_SESSION['user_id'])){
                                 <div class="row mt-4">
                                     <div class="col d-flex"> 
                                         <a href="#" class="mr-5">Change Password</a> 
-                                        <a href="#">Edit Profile</a> 
+                                        <a href="user_edit_profile.php">Edit Profile</a> 
                                     </div>
                                 </div>
                             </div>

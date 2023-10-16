@@ -203,7 +203,7 @@ if(isset($_SESSION['biz_id'])){
                             <div class="col">
                             <div class="form-outline">
                                 <select class="form-control" name="prod_category" id="categ">
-                            <!-- Loop through category -->
+                                <!-- Loop through category -->
                                 <?php foreach($categories as $cat){ ?>
                                 <option value="<?php echo $cat['cat_id']; ?>"> <?php echo $cat['cat_name']; ?> </option>
                                 <?php  }?>
@@ -213,12 +213,11 @@ if(isset($_SESSION['biz_id'])){
                             </div>
                             </div>
                         </div>
-                        <input type="hidden" name="prod_biz" id="prod_biz">
                         <div class="mb-3">
                             <label for="txt_addprod" class="form-label">Product Description</label>
                             <textarea class="form-control" name="prod_desc" id="txt_addprod" rows="3"></textarea>
                         </div>
-                        <!-- Message input -->
+                        <input type="hidden" name="prod_biz" id="prod_biz">
                         <div class="form-outline mb-4">
                             <button type="submit" name="addprod-btn" class="btn btn-primary btn-lg">Add Product</button>
                         </div>

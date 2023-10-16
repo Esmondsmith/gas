@@ -65,7 +65,7 @@
 
 <script src="../user_assets/bootstrap/js/bootstrap.bundle.js"></script> 
 <script src="../user_assets/bootstrap/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="../user_assets/bootstrap/js/script.js" crossorigin="anonymous"></script> 
+<script src="user_assets/bootstrap/js/bootstrap.bundle.js" crossorigin="anonymous"></script> 
 
 <script src="../user_assets/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -77,21 +77,22 @@
       })
 
       
-      $('#btnpass-signup').click(function(){
-          //   var name =  $('name1').val()
-            var pwd =  $('#user-pass-signup').attr('type')
-              if (pwd == 'password'){
-                  $('#user-pass-signup').attr('type', 'text')
-                  $('#btnpass-signup').html('<i class="fa-sharp fa-solid fa-eye-slash"></i>')
-      
-              } else{
-                  $('#user-pass-signup').attr('type', 'password')
-                  $('#btnpass-signup').html(' <i class="fa-sharp fa-solid fa-eye"></i>')
-                
-              }
+          $('#btnpass-signup').click(function(){
+              //   var name =  $('name1').val()
+                var pwd =  $('#user-pass-signup').attr('type')
+                  if (pwd == 'password'){
+                      $('#user-pass-signup').attr('type', 'text')
+                      $('#btnpass-signup').html('<i class="fa-sharp fa-solid fa-eye-slash"></i>')
+          
+                  } else{
+                      $('#user-pass-signup').attr('type', 'password')
+                      $('#btnpass-signup').html(' <i class="fa-sharp fa-solid fa-eye"></i>')
+                    
+                  }
 
           })
 
+          
           $('#btnpass-login').click(function(){
           //   var name =  $('name1').val()
             var pwd =  $('#user-pass-login').attr('type')

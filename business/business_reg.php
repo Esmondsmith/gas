@@ -48,9 +48,13 @@
             <li class="nav-item">
               <a class="nav-link" href="../about.php"><b class="nav-nav">About Us</b></a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="user_register.php"><b class="nav-nav">Sign Up</b></a>
-            </li> -->
+            <div class="nav-item dropdown" >
+              <a class="nav-link" data-bs-toggle="dropdown" href="#"><b class="nav-nav dropdown-toggle">Sign Up</b></a>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item"><a href="../user_register.php">As a User</a></button></li>
+                <li><button class="dropdown-item"><a href="#">As a Business</a></button></li>
+              </ul>
+            </div>
             <li class="nav-item">
               <a class="nav-link" href="business_login.php"><img src="icons/icon.png" class="mb-2"><b class="nav-nav">Log In</b></a>
             </li>
@@ -124,22 +128,22 @@
         <form class="card p-2">
           <div class="input-group">
             <label><strong>Quick Message</strong></label><br>
-            <textarea cols="60" rows="4"></textarea><br><br>
-            <input type="email" class="form-control" placeholder="Enter email">
-            <button type="submit" class="btn vendor-btnFAQs">SUBMIT</button>
+            <textarea cols="60" rows="4" name="reg_textarea"></textarea><br><br>
+            <input type="email" name="reg_email" class="form-control" placeholder="Enter email">
+            <button type="submit" name="reg_btn" class="btn vendor-btnFAQs">SUBMIT</button>
           </div>
         </form>
       </div>
       <div class="col-md-7 col-lg-8">
-        <h2 class="my-3 vendor-class1"><b>Register</b></h2>
+      <h2 class="my-3 vendor-class1"><b>Register</b></h2>
 
         <!-- On line 14 to 24, we are checking if there is an error message in SESSION and then displaying it and later remove it from SESSION after displaying -->
                 <?php
                     if(isset($_SESSION['biz_reg_error'])){
                 ?>
-                <p class="text-danger text-center bg-white"><?php echo $_SESSION['biz_reg_error']; ?></p>
-                        <!-- unset is used to stop the script -->
-                        <?php unset($_SESSION['biz_reg_error']); ?>
+                  <p class="text-danger text-center bg-white"><?php echo $_SESSION['biz_reg_error']; ?></p>
+                  <!-- unset is used to stop the script -->
+                  <?php unset($_SESSION['biz_reg_error']); ?>
                 <?php
                     }
                 ?>

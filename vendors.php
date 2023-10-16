@@ -11,6 +11,13 @@ $business = $biz->fetch_all_business();
 // print_r($business);
 
 
+$biz = null;  // Initialize $biz to null
+if(isset($_SESSION['biz_id'])){
+  $biz_id = $_SESSION['biz_id'];
+  $bz = new Business();
+  $biz = $bz->fetch_business_details($biz_id);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +81,7 @@ $business = $biz->fetch_all_business();
         </div>
       </div> 
     <div class="col safety-post col-12 text-center">
-        <h1 class="vendor-benefit mb-5">Vendors Near <span style="color:#FF632D;"><u> You</u></span></h1>
+        <h1>Vendors Near <span style="color:#FF632D;"><u> You</u></span></h1>
       </div>
     </div> 
 
@@ -93,26 +100,23 @@ $business = $biz->fetch_all_business();
     <!-- To display all businesses in GUI -->
     <div class="row biz-item" id="eachstate">
     <?php if(count($business) > 0 ){ ?>
-    <?php foreach($business as $bus){ 
-    ?>  
-
-    <div class="col-md-4 biz-item">
-      <div class="card mx-4 mb-5" style="width:90%;">
-          <img src="images/gasgas.jpg" class="card-img-top" alt="business image">
-        <div class="card-body space-around" name="biz_card" id="biz_card">
-            <h4 class="card-title" style="color: #FF632D"><strong><?php echo $bus['biz_name']; ?></strong></h4>
-            <p class="card-text"><strong>Address: </strong> <?php echo $bus['biz_address']; ?></p>
-            <p class="card-text"><strong>City: </strong> <?php echo $bus['biz_city']; ?></p>
-            <p class="card-text"><strong>Seller phone: </strong> <?php echo $bus['biz_phone']; ?></p>
-            <!-- To pass the id via query string -->
-            <a href="vendors_info.php?id=<?php echo $bus['biz_id']; ?>" class="btn btn-primary">Business Details</a>
+    <?php foreach($business as $bus){ ?>  
+      <div class="col-md-4 biz-item">
+        <div class="card mx-4 mb-5" style="width:90%;">
+            <img src="images/gasgas.jpg" class="card-img-top" alt="business image">
+          <div class="card-body space-around" name="biz_card" id="biz_card">
+              <h4 class="card-title" style="color: #FF632D"><strong><?php echo $bus['biz_name']; ?></strong></h4>
+              <p class="card-text"><strong>Address: </strong> <?php echo $bus['biz_address']; ?></p>
+              <p class="card-text"><strong>City: </strong> <?php echo $bus['biz_city']; ?></p>
+              <p class="card-text"><strong>Seller phone: </strong> <?php echo $bus['biz_phone']; ?></p>
+              <!-- To pass the id via query string -->
+              <a href="vendors_info.php?id=<?php echo $bus['biz_id']; ?>" class="btn btn-primary">Business Details</a>
+          </div>
         </div>
       </div>
-    </div>
     <?php } ?>
     <?php } ?>
     </div>
-
 
     <script src="business/assets/jquery.js"></script>
     <script type="text/javascript">

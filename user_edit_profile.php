@@ -34,10 +34,13 @@ if(isset($_GET['id'])){
 
 } 
 
-// else {
-//   header("location:user_profile.php");
-//   exit();
-// }
+
+$user = null;  
+if(isset($_SESSION['user_id'])){
+  $user_id = $_SESSION['user_id'];
+  $userr = new User();
+  $user = $userr -> fetch_user_details($user_id);
+}
 
 
 ?>
@@ -138,11 +141,10 @@ if(isset($_GET['id'])){
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php //echo $user['user_fullname']; ?></span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user['user_fullname']; ?></span>
                         <img src="uploads/<?php 
                         
                         if ($user !== null) {
-                            // Access $biz['biz_fullname'] and $biz['user_img'] safely
                             echo $user['user_img'];
                         }
                         
@@ -160,7 +162,7 @@ if(isset($_GET['id'])){
             <p id="files"></p>
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800"><strong>Hello,
+                <h1 class="h3 mb-0 text-gray-800"><strong>Edit your profile details,
                 <?php
                     if ($user !== null) {
                         // Access $biz['biz_name'] and $biz['biz_img'] safely
@@ -172,32 +174,21 @@ if(isset($_GET['id'])){
             <div class="row">
                   
                     <!-- Update user details START HERE -->
-                    <form action="process/user_reg_process.php" method="post" class="ml-4">
+                    <form action="process/user_editprocess.php" method="post" class="ml-4">
                         
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" name="user_fullname" class="form-control form-control-user" id="fullname" placeholder="Full Name">
+                                <input type="text" name="user_fullname" value="<?php echo $user['user_fullname']; ?>" class="form-control form-control-user" id="fullname" placeholder="Full Name">
                             </div>
                             <div class="col-sm-6">
-                                <input type="number" name="user_phone" class="form-control form-control-user" id="exampleLastName" placeholder="Phone Number">
+                                <input type="number" name="user_phone" value="<?php echo $user['user_phone']; ?>" class="form-control form-control-user" id="exampleLastName" placeholder="Phone Number">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="user_email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="password" name="user_password" class="form-control form-control-user" id="userpwd1" placeholder="Password">
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="password" name="user_pass" class="form-control form-control-user" id="userpwd2" placeholder="Repeat Password">
-                            </div>
+                            <input type="text" name="user_address" value="<?php echo $user['user_address']; ?>" class="form-control form-control-user" id="useraddress" placeholder="Residential Address. E.g, House number and street">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="user_address" class="form-control form-control-user" id="useraddress" placeholder="Residential Address. E.g, House number and street">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="user_city" class="form-control form-control-user" id="exampleInputEmail" placeholder="City">
+                            <input type="text" name="user_city" value="<?php echo $user['user_city']; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="City">
                         </div>
                         <div class="form-group row">
                             
@@ -219,8 +210,10 @@ if(isset($_GET['id'])){
                             </div>
                            
                         </div>
-                        
-                        <button class="btn btn-primary btn-user btn-block" type="submit" name="user_reg_btn">Register</button>
+
+                        <input type="hidden" name="user_id" value="<?php echo $user['user_id'];  ?>">
+                        <hr>
+                        <button class="btn btn-primary btn-user btn-block" type="submit" name="user_update">Update Details</button>
                         <hr>
                     </form> 
                     <!-- Update user details ends here -->

@@ -20,18 +20,17 @@ error_reporting(E_ALL);
             //To check if the email already exist in the database.
             $sql = "SELECT * FROM users WHERE user_email = ?";
             $stmt = $this -> connect() -> prepare($sql);
-            //using ordinal to bind.
             $stmt->bindparam(1, $user_email, PDO::PARAM_STR);
             $stmt->execute();
             //The rowCount() is used to check the database if such email already exist in it.
             $user_count = $stmt->rowCount();
             //IF user_count is greater than 0, if means the user already exist in the DB.
             if($user_count > 0){
-                return "Error, email already exist";
+                return "Error, email not available";
                 exit();
             }
 
-            //If it passed this stage above, it means the email doesn't exist. So we can now insert into DB Table.
+            //If it reaches the stage above, it means email doesn't exist. So we can now insert into DB Table.
             $sql = "INSERT INTO users(user_fullname, user_email, user_password, user_phone, user_address, user_city, user_state_id, user_local_govt_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this -> connect() -> prepare($sql);
             $stmt->bindparam(1, $user_fullname, PDO::PARAM_STR);
@@ -40,9 +39,8 @@ error_reporting(E_ALL);
             $stmt->bindparam(4, $user_phone, PDO::PARAM_INT);
             $stmt->bindparam(5, $user_address, PDO::PARAM_STR);
             $stmt->bindparam(6, $user_city, PDO::PARAM_STR);
-            $stmt->bindparam(7, $user_state_name, PDO::PARAM_INT);
+            $stmt->bindparam(7, $user_state_id, PDO::PARAM_INT);
             $stmt->bindparam(8, $user_local_govt_name, PDO::PARAM_INT);
-
                 $insert_user = $stmt -> execute();
                 return $insert_user;       
         }
@@ -139,6 +137,45 @@ error_reporting(E_ALL);
 
         }
 
+        public function fetch_all_users(){
+            $sql = "SELECT * FROM users";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $users;
+        }
+
+        public function delete_user($user_id){
+            $sql = "DELETE FROM users WHERE user_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindparam(1, $user_id, PDO::PARAM_INT);
+            $is_deleted = $stmt->execute();
+                return $is_deleted;
+        }
+
+        public function get_user_state($stateid){
+            $sql = "SELECT state_name FROM state WHERE state_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindparam(1, $stateid, PDO::PARAM_INT);
+            $stmt->execute();
+            $state = $stmt->fetch(PDO::FETCH_ASSOC);
+            $statename = $state["state_name"];
+            return $statename;
+        }
+
+        public function get_user_lga($lgaid){
+            $sql = "SELECT local_govt_name FROM local_govt WHERE local_govt_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindparam(1, $lgaid, PDO::PARAM_INT);
+            $stmt->execute();
+            $lga = $stmt->fetch(PDO::FETCH_ASSOC);
+            $locals = $lga["local_govt_name"];
+            return $locals;
+        }
+
+
+       
+
         
     }
 
@@ -146,7 +183,7 @@ error_reporting(E_ALL);
             // echo $user2 -> user_login("sunday@gmail.com", "sunday123");
     
             // $user2 = new User();
-            // echo $user2 -> register_user("Damon Phil", "nadike@gmail.com", "natnat123", 876787800, "Jakes road, off 17th street", "Ikoyi", 5, 2);
+            // echo $user2 -> register_user("Romeo Johnson", "romeo@gmail.com", "natnat1234", 876787800, "Jakes road, off 17th street", "Ikoyi", 6, 12);
 
             // FETCH USER DETAILS
             // $user2 = new User();

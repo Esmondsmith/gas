@@ -2,19 +2,22 @@
 session_start();
 require_once "partials/navbar.php";
 require_once "classes/User.php";
+// require_once "guards/guard.php";
+
 
 $user = null;  // Initialize $biz to null 
 
 if(isset($_SESSION['user_id'])){
   $user_id = $_SESSION['user_id'];
-
   $userr = new User();
   $user = $userr -> fetch_user_details($user_id);
-
 //   echo "<pre>";
 //   print_r($user);
 //   echo "</pre>";
 }
+
+$use = new User();
+// $use->get_user_state();
 
 ?>
 
@@ -54,7 +57,7 @@ if(isset($_SESSION['user_id'])){
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Edit:</h6>
-                        <a class="collapse-item" href="user_upload.php">Edit Profile</a>
+                        <a class="collapse-item" href="user_edit_profile.php">Edit Profile</a>
                         <a class="collapse-item" href="#">Change password</a>
                     </div>
                 </div>
@@ -71,7 +74,7 @@ if(isset($_SESSION['user_id'])){
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">View:</h6>
-                        <a class="collapse-item" href="#">What's New</a>
+                        <a class="collapse-item" href="about.php">What's New</a>
                         <a class="collapse-item" href="vendors.php#user_profile">View Vendors</a>
                     </div>
                 </div>
@@ -182,6 +185,11 @@ if(isset($_SESSION['user_id'])){
                                         echo $user['user_city'];
                                     }
                                 ?></h5></p>
+                                <p class="card-text"><strong>State:</strong> <?php
+                                    if ($user !== null) {
+                                        echo $use->get_user_state($user['user_state_id']);
+                                    }
+                                ?></h5></p>
                                 <!-- <p class="card-text"><strong>State of Residence:</strong> <?php
                                     //if ($user !== null) {
                                         //echo $user['user_state_id'];
@@ -195,7 +203,7 @@ if(isset($_SESSION['user_id'])){
                                 ?></h5></p>
                                 <div class="row mt-4">
                                     <div class="col d-flex"> 
-                                        <a href="#" class="mr-5">Change Password</a> 
+                                        <a href="user_pass_change.php" class="mr-5">Change Password</a> 
                                         <a href="user_edit_profile.php">Edit Profile</a> 
                                     </div>
                                 </div>

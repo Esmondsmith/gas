@@ -15,7 +15,6 @@ if(isset($_SESSION['biz_id'])){
 
 //This line of code was used to generate the state name instead of its id.
 $bizz = new Business();
-    // $buss = $bizz->get_state_name($biz_id);
 
 ?>
 
@@ -60,8 +59,8 @@ $bizz = new Business();
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Edit:</h6>
-                        <a class="collapse-item" href="buttons.html">Edit Profile</a>
-                        <a class="collapse-item" href="cards.html">Change password</a>
+                        <a class="collapse-item" href="edit_business.php">Edit Profile</a>
+                        <a class="collapse-item" href="edit_business.php">Change password</a>
                     </div>
                 </div>
             </li>
@@ -78,7 +77,7 @@ $bizz = new Business();
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">View Lists:</h6>
                         <a class="collapse-item" href="productlist.php">View Available Products</a>
-                        <a class="collapse-item" href="#">View Customers List</a>
+                        <a class="collapse-item" href="cust_orders.php">View all orders</a>
                     </div>
                 </div>
             </li>

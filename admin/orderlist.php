@@ -1,7 +1,25 @@
 <?php
+session_start();
 require_once "partials/navbar.php";
+require_once "../business/classes/Business.php";
+require_once "../business/classes/Product.php";
+
+
+
+$business = null;
+if(isset($_SESSION['biz_id'])){
+  $biz_id = $_SESSION['biz_id'];
+  $biz2 = new Business();
+  $business = $biz2 -> fetch_business_details($biz_id);
+}
+
+
+$prod = new Product();
+$product = $prod->get_orders();
+
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,11 +125,10 @@ require_once "partials/navbar.php";
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="logout.php">
+                <a class="nav-link" href="admin_logout.php">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Log out</span></a>
             </li>
-
         </ul>
         <!-- End of Sidebar -->
 
@@ -120,58 +137,7 @@ require_once "partials/navbar.php";
 
             <!-- Main Content -->
             <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Photo</span>
-                                <img class="img-profile rounded-circle"
-                                    src="icons/admin.png">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.php" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid my-5">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -240,57 +206,67 @@ require_once "partials/navbar.php";
                     <!-- Content Row -->
 
                     <div class="row">
+                        <div class="row">
 
                         <!-- Form Area -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <div class="col-md-9 mb-4">
-                                <div class="card mb-4">
-                                <div class="card-header py-3">
-                                    
-                                </div>
-                                </div>
+                        <div class="col-xl-10 col-lg-7">
+                            <div class="card mb-4">
+                            <div class="card-header py-3">
+                            <h4 style="color: #4676F7; font-weight:bold;">ORDER LIST</h4>
                             </div>
                             </div>
-                        </div>
+                            <!-- Add product form start here -->
+                            <div class="col-md-12 mb-4">
+                            <div class="card mb-4 ">
+                            <div class="card-header py-3">
+                                <h5 class="mb-0">All Order Records</h5>
+                            </div>
+                        <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <strong>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Phone</th>  
+                            <th scope="col">Order Date</th>
+                            <th scope="col"></th>
 
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Application users</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Others
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i>Vendors
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i>Users
-                                        </span>
-                                    </div>
-                                </div>
+                                </strong>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    <!-- This is done to create and increase a book numbering -->
+                        <?php $num = 1; ?>
+                        <?php foreach($product as $prodt){ ?>
+                            <tr>
+                            <th scope="row"><?php echo $num++; ?></th>
+                            <!-- To make the fieds dynamic -->
+                            <td><?php echo $prodt['order_custname']; ?></td>   
+                            <td><?php echo $prodt['order_custaddress']; ?></td> 
+                            <td><?php echo $prodt['order_qty']; ?></td>
+                            <td id="td_call"><?php echo $prodt['order_custphone']; ?></td>
+                            <td><?php echo $prodt['order_date']; ?></td>
+                            <td>
+                            <form action="process/delete_ord.php" method="post">
+                                <input type="hidden" name="order_id" value="<?php echo $prodt['order_id']; ?>">
+                                <button type="submit" style="background-color:red; border: red; padding: 5px; border-radius: 6%; color: white;" classs=" btn-sm btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete order</button>
+                            </form> &nbsp;
+                            </td>
+                            </tr>
+                        <?php } ?>
+                        
+
+                        </tbody>
+                        </table>
+
+                            </div>
                             </div>
                         </div>
                     </div>
 
-            <!-- End of Main Content -->
-
+                       
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">

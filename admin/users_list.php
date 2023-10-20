@@ -1,5 +1,23 @@
 <?php
+session_start();
 require_once "partials/navbar.php";
+require_once "../classes/User.php";
+
+// $category = []; 
+// if(isset($_SESSION['cat_id'])){
+//   $cat_id = $_SESSION['cat_id'];
+//   $cat2 = new Category();
+//   $category = $cat2->fetch_cat_details($cat_id);
+// }
+
+    //To fetch all products.
+   
+
+  $use = new User();
+  $users = $use->fetch_all_users();
+
+  $state = new User();
+//   $lga = new User();
 
 ?>
 <!DOCTYPE html>
@@ -71,10 +89,10 @@ require_once "partials/navbar.php";
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="add_category.php" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" href="categorylist.php" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <span>Add Category</span>
+                    <span>Product Category</span>
                 </a>
             </li>
 
@@ -89,8 +107,8 @@ require_once "partials/navbar.php";
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">View Lists:</h6>
-                        <a class="collapse-item" href="vendors_list.php">View All Businesses</a>
-                        <a class="collapse-item" href="users_list.php">View ALL Customers</a>
+                        <a class="collapse-item" href="admin_profile.php">Porfile</a>
+                        <a class="collapse-item" href="vendors_list.php">View ALL Businesses</a>
                     </div>
                 </div>
             </li>
@@ -132,6 +150,7 @@ require_once "partials/navbar.php";
                     <!-- Topbar Search -->
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -158,7 +177,7 @@ require_once "partials/navbar.php";
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="login.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="admin_login.php" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -242,55 +261,70 @@ require_once "partials/navbar.php";
                     <div class="row">
 
                         <!-- Form Area -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <div class="col-md-9 mb-4">
-                                <div class="card mb-4">
-                                <div class="card-header py-3">
-                                    
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
+                        <div class="row">
 
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Application users</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Others
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i>Vendors
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i>Users
-                                        </span>
-                                    </div>
-                                </div>
+                        <!-- Form Area -->
+                        <div class="col-xl-8 col-lg-12">
+    
+                            <h4 style="color: #4676F7; font-weight:bold;">ALL REGISTERED USER</h4>
+
+                        </div>
+                        <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <strong>
+                                    <th scope="col">S/N</th>
+                                    <th scope="col"> Name</th>
+                                    <th scope="col"> Email</th>  
+                                    <th scope="col"> Phone</th>
+                                    <th scope="col"> Address</th>
+                                    <th scope="col"> City</th>
+                                    <th scope="col"> State</th>
+                                    <th scope="col">Date Registered</th>
+                                    <th scope="col">Delete</th>
+                                    <!-- <th scope="col">Block</th> -->
+                                </strong>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    <!-- This is done to create and increase a book numbering -->
+                        <?php $num = 1; ?>
+                        <?php foreach($users as $use){ ?>
+                            <tr>
+                            <th scope="row"><?php echo $num++; ?></th>
+                            <!-- To make the fieds heading dynamic -->
+                            <td><?php echo $use['user_fullname']; ?></td>    
+                            <td><?php echo $use['user_email']; ?></td>
+                            <td><?php echo $use['user_phone']; ?></td>
+                            <td><?php echo $use['user_address']; ?></td>
+                            <td><?php echo $use['user_city']; ?></td>
+                            <td><?php echo $state->get_user_state($use['user_state_id']); ?></td>
+                            <!-- <td><?php //echo $lga->get_user_lga($use['user_local_govt_id']); ?></td> -->
+                            <!-- <td><?php //echo $use['user_img']; ?></td> -->
+                            <td><?php echo $use['date_registered']; ?></td>
+
+                            <td style="display:flex";>
+                            
+                            <form action="process/deleteuser.php" method="post">
+                                <input type="hidden" name="user_id" value="<?php echo $use['user_id']; ?>">
+                                <button type="submit" style="background-color:red; border: red; padding: 7px; border-radius: 6%; color: white;" classs=" btn-md btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete</button>
+                            </form>
+                                <!-- Below, we are using query string to pass the id of book while editing
+                                <a href="editproduct.php?id=<?php// echo $use['biz_id']; ?>" class='btn btn-md btn-success mx-3'><i class='fa fa-edit'>&nbsp</i> Block</a> -->
+                            </td>
+                            </tr>
+
+                        <?php } ?>
+
+                        </tbody>
+                        </table>
+
+                            </div>
                             </div>
                         </div>
                     </div>
 
-            <!-- End of Main Content -->
-
+                        
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -323,7 +357,7 @@ require_once "partials/navbar.php";
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Are you sure you want to log out?</div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="login.php">Logout</a>

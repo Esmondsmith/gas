@@ -14,15 +14,8 @@ if(isset($_SESSION['biz_id'])){
 }
 
 
-require_once "classes/Category.php";
-$cat = new Category();
-
-
-// $prod = new Product();
-// $product = $prod->fetch_biz_products($product_biz_id);
-
 $prod = new Product();
-$product = $prod->fetch_all_products();
+$product = $prod->get_orders();
 
 
 ?>
@@ -67,6 +60,7 @@ $product = $prod->fetch_all_products();
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Edit:</h6>
                         <a class="collapse-item" href="edit_business.php">Edit Profile</a>
+                        <a class="collapse-item" href="#">Change password</a>
                     </div>
                 </div>
             </li>
@@ -83,6 +77,7 @@ $product = $prod->fetch_all_products();
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">View Lists:</h6>
                         <a class="collapse-item" href="productlist.php">View Available Products</a>
+                        <a class="collapse-item" href="#">View Customers List</a>
                     </div>
                 </div>
             </li>
@@ -190,27 +185,27 @@ $product = $prod->fetch_all_products();
                         <div class="col-xl-10 col-lg-7">
                             <div class="card mb-4">
                             <div class="card-header py-3">
-                            <h4 style="color: #4676F7; font-weight:bold;">PRODUCT LIST</h4>
+                            <h4 style="color: #4676F7; font-weight:bold;">ORDER LIST</h4>
                             </div>
                             </div>
                             <!-- Add product form start here -->
                             <div class="col-md-12 mb-4">
                             <div class="card mb-4 ">
                             <div class="card-header py-3">
-                                <h5 class="mb-0">Product Lists</h5>
+                                <h5 class="mb-0">Customer Order Records</h5>
                             </div>
-                            <div class="card-body" style="min-height:200px;">
-                                <a href="add_product.php" class="btn btn-success">Add New Product</a>
                         <table class="table table-striped">
                         <thead>
                             <tr>
                                 <strong>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Description</th>  
-                            <th scope="col">Date</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Phone</th>  
+                            <th scope="col">Order Date</th>
+                            <th scope="col">Reply to order</th>
+
                                 </strong>
                             </tr>
                         </thead>
@@ -221,22 +216,19 @@ $product = $prod->fetch_all_products();
                             <tr>
                             <th scope="row"><?php echo $num++; ?></th>
                             <!-- To make the fieds dynamic -->
-                            <td><?php echo $prodt['product_name']; ?></td>   
-                            <td>&#8358;<?php echo $prodt['product_price']; ?></td> 
-                            <td><?php echo $cat->get_category_name($prodt['product_cat_id']); ?></td> 
-                            <td><?php echo $prodt['product_desc']; ?></td>
-                            <td><?php echo $prodt['date_added']; ?></td>
+                            <td><?php echo $prodt['order_custname']; ?></td>   
+                            <td><?php echo $prodt['order_custaddress']; ?></td> 
+                            <td><?php echo $prodt['order_qty']; ?></td>
+                            <td id="td_call"><?php echo $prodt['order_custphone']; ?></td>
+                            <td><?php echo $prodt['order_date']; ?></td>
                             <td style="display:flex";>
-                                
-                            <form action="process/deleteprod_process.php" method="post">
-                                <input type="hidden" name="product_id" value="<?php echo $prodt['product_id']; ?>">
-                                <button type="submit" style="background-color:red; border: red; padding: 7px; border-radius: 6%; color: white;" classs=" btn-sm btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete</button>
-                            </form>
-                                <!-- Below, we are using query string to pass the id of book while editing -->
-                                <a href="editproduct.php?id=<?php echo $prodt['product_id']; ?>" class='btn btn-sm btn-success mx-3'><i class='fa fa-edit'>&nbsp</i> Edit</a>
+                            <form action="process/deleteorder_process.php" method="post">
+                                <input type="hidden" name="order_id" value="<?php echo $prodt['order_id']; ?>">
+                                <button type="submit" style="background-color:red; border: red; padding: 5px; border-radius: 6%; color: white;" classs=" btn-sm btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete order</button>
+                            </form> &nbsp;
+                                <button type="submit" style="background-color:green; border: green; padding: 7px; border-radius: 8%; color: white;" id="btn_call" name="delete_btn"> phone </button> &nbsp;
                             </td>
                             </tr>
-
                         <?php } ?>
 
                         </tbody>

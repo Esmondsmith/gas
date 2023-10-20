@@ -28,6 +28,8 @@ if($_POST){
 
     }
 
+} else {
+    header("location: admin_login.php");
 }
 
 

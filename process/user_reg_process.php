@@ -9,10 +9,6 @@
     if($_POST){
 
         if(isset($_POST['user_reg_btn'])){
-
-            // print_r($_POST);
-            // die();
-
             $user_fullname = sanitize($_POST['user_fullname']);
             $user_phone = sanitize($_POST['user_phone']);
             $user_email = sanitize($_POST['user_email']);
@@ -52,7 +48,7 @@
             //hashing the password
             $hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
             $user_reg = new User();
-            $response = $user_reg -> register_user($user_fullname, $user_email, $hashed_password, $user_phone, $user_address, $user_city, $user_local_govt_id, $user_state_id);
+            $response = $user_reg -> register_user($user_fullname, $user_email, $hashed_password, $user_phone, $user_address, $user_city, $user_state_id, $user_local_govt_id);
 
             if($response){
                 header("location:../reg_sucess.php");

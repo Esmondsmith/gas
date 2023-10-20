@@ -103,6 +103,8 @@ class Product extends Db{
 
         }
 
+        
+
         public function get_product_info($product_id){
             $sql = "SELECT * FROM  products WHERE product_id = ?";
             $stmt = $this->connect()->prepare($sql);
@@ -116,6 +118,23 @@ class Product extends Db{
                     $prod = $stmt->fetch(PDO::FETCH_ASSOC);
                     return $prod;
                 }
+        }
+
+        public function get_orders(){
+            $sql = "SELECT * FROM orders";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute();
+            $order = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $order;
+        }
+
+        
+        public function deleteorder($order_id){
+            $sql = "DELETE FROM orders WHERE order_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindparam(1, $order_id, PDO::PARAM_INT);
+            $is_deleted = $stmt->execute();
+                return $is_deleted;
         }
 
 

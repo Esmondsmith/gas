@@ -1,7 +1,9 @@
 <?php
     session_start();
+    require_once "guards/guard.php";
     require_once "partials/navbar.php";
     require_once "classes/User.php";
+    
 
     if(isset($_SESSION['user_id'])){
     $user_id = $_SESSION['user_id'];

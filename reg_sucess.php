@@ -1,3 +1,7 @@
+<?php
+// require_once "guards/guard.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

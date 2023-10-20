@@ -2,6 +2,7 @@
 session_start();
 require_once "partials/navbar.php";
 require_once "classes/User.php";
+require_once "guards/guard.php";
 
 include_once "classes/State.php";
 $sta = new State();
@@ -114,6 +115,10 @@ if(isset($_SESSION['user_id'])){
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <a href="user_profile.php"><button class="rounded-circle border-0" id="sidebarToggle"></button></a>
+    </div>
 
 </ul>
 <!-- End of Sidebar -->
@@ -171,7 +176,7 @@ if(isset($_SESSION['user_id'])){
                 ?>
                 </strong></h1>
             </div>
-            <div class="row">
+            <div class="row w-50">
                   
                     <!-- Update user details START HERE -->
                     <form action="process/user_editprocess.php" method="post" class="ml-4">

@@ -28,6 +28,8 @@ include_once "../classes/Business.php";
 
         }
 
+    } else {
+        header("location: business_login.php");
     }
 
 

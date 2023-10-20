@@ -3,6 +3,7 @@ session_start();
 require_once "partials/navbar.php";
 require_once "classes/Business.php";
 require_once "classes/Category.php";
+
 //fetching the list of whats coming from the DB.
 $cat = new Category();
 $categories = $cat->fetch_category();
@@ -61,8 +62,7 @@ if(isset($_SESSION['biz_id'])){
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Edit:</h6>
-                        <a class="collapse-item" href="buttons.html">Edit Profile</a>
-                        <a class="collapse-item" href="cards.html">Change password</a>
+                        <a class="collapse-item" href="edit_business.php">Edit Profile</a>
                     </div>
                 </div>
             </li>
@@ -79,7 +79,6 @@ if(isset($_SESSION['biz_id'])){
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">View Lists:</h6>
                         <a class="collapse-item" href="productlist.php">View Available Products</a>
-                        <a class="collapse-item" href="#">View Customers List</a>
                     </div>
                 </div>
             </li>
@@ -96,7 +95,7 @@ if(isset($_SESSION['biz_id'])){
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="logout.php">
+                <a class="nav-link" href="business_login.php">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     <span>Log out</span></a>
             </li>

@@ -19,15 +19,11 @@ error_reporting(E_ALL);
 
         //******************* REGISTER METHOD ********************
         public function register_business($biz_name, $biz_email, $biz_phone, $biz_password, $biz_doc, $biz_address, $biz_city, $biz_type_id, $biz_state_id, $biz_local_govt_id){
-            //To check if the email already exist in the database.
             $sql = "SELECT * FROM business WHERE biz_email = ?";
             $stmt = $this -> connect() -> prepare($sql);
-            //using ordinal to bind.
             $stmt->bindparam(1, $biz_email, PDO::PARAM_STR);
             $stmt->execute();
-            //The rowCount() is used to check the database if such email already exist in it.
             $biz_count = $stmt->rowCount();
-            //IF user_count is greater than 0, if means the user already exist in the DB.
             if($biz_count > 0){
                 return "Error, email already exist";
                 exit();
@@ -46,8 +42,6 @@ error_reporting(E_ALL);
             $stmt->bindparam(8, $biz_type_id, PDO::PARAM_STR);
             $stmt->bindparam(9, $biz_state_id, PDO::PARAM_STR);
             $stmt->bindparam(10, $biz_local_govt_name, PDO::PARAM_INT); // Supposed to be $biz_local_govt_id
-            
-
                 $business = $stmt->execute();
                 return $business;       
         }
@@ -200,9 +194,15 @@ error_reporting(E_ALL);
 
         }
 
+        public function delete_biz($biz_id){
+            $sql = "DELETE FROM business WHERE biz_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindparam(1, $biz_id, PDO::PARAM_INT);
+            $is_deleted = $stmt->execute();
+                return $is_deleted;
+        }
 
-                    
-
+                         
 
     }
 

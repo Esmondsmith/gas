@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business</title>
-    <link  href="assets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
-    <link  href="assets/fontawesome/css/fontawesome.css" rel="stylesheet" type="text/css">
+    <link  href="assets/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+    <link  href="assets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
     <link href="assets/animate.css" rel="stylesheet" type="text/css">
+    
 
     
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

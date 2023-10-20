@@ -1,5 +1,7 @@
 <?php
 require_once "classes/Product.php";
+// require_once "guards/guard.php";
+
 
 if(isset($_GET['id'])){
     $product_id = $_GET['id'];
@@ -93,7 +95,7 @@ $cat = new Category();
           <div class="col-6 dbl-brdr">
               <div class="vendor">
                   <p id="p2" class="mb-2">Enter order details.</p>
-                  <p >All fields are required</p>
+                  <p >Ensure that all fields are filled</p>
                     <?php if(isset($_SESSION['order_error'])){ ?>
                     <p class="text-danger text-center bg-white"><?php echo $_SESSION['order_error']; ?></p>
                             <!-- unset is used to stop the script -->
@@ -116,7 +118,7 @@ $cat = new Category();
                             <input type="number" name="order_qty" class="form-control mb-2" id="qty" placeholder="Quantity">
                         </div>
                         </div>
-                        <input type="checkbox" id="chk" name="chk"><b> Confirm all fields are filled</b><br>
+                        <input type="checkbox" id="chk" name="chk"><b> Confirm your order</b><br>
                         <button class="btn btn-primary btn-block" id="btn1" type="submit" disabled name="order_btn">order</button>
                     </form> 
               </div>

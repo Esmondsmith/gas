@@ -1,5 +1,7 @@
 <?php
 require_once "business/classes/Business.php";
+// require_once "guards/guard.php";
+
 
     if(isset($_GET['id'])){
         $biz_id = $_GET['id'];
@@ -137,7 +139,7 @@ require_once "business/classes/Business.php";
                         <td style="display:flex";>
                         <!-- Below, we are using query string to pass the id of book while editing -->
                         <!-- THIS -->
-                        <a href="business/order.php?id=<?php echo $prod['product_id']; ?>" target="_blank" class='btn btn-md btn-success mx-3'><i class='fa fa-order'>&nbsp</i>Order Now</a>
+                        <a href="business/order.php?id=<?php echo $prod['product_id']; ?>" target="_blank" class='btn btn-md btn-success mx-3'><i class="fa-solid fa-cart-shopping"></i> Order Now</a>
                     </td>
                     </tr>
                 <?php } ?>

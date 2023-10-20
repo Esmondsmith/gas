@@ -35,10 +35,6 @@
               </ul>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-4" type="search" placeholder="Search for Product" aria-label="Search" autofocus>
-            <button class="btn" type="submit" style="background: #FF632D; color: white;">Search</button>
-          </form>
         </div>
     </div>
     </div> <!-- NAVBAR END HERE -->

@@ -86,6 +86,8 @@ include_once "../utilities/sanitizer.php";
 
         }
 
+    } else {
+        header("location: admin_login.php");
     }
 
 

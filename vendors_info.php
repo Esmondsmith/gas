@@ -1,7 +1,5 @@
 <?php
 require_once "business/classes/Business.php";
-// require_once "guards/guard.php";
-
 
     if(isset($_GET['id'])){
         $biz_id = $_GET['id'];

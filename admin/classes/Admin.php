@@ -35,6 +35,14 @@ include_once "Db.php";
                 exit();
         }    
 
+        public function deleteorder($order_id){
+            $sql = "DELETE FROM orders WHERE order_id = ?";
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->bindparam(1, $order_id, PDO::PARAM_INT);
+            $is_deleted = $stmt->execute();
+                return $is_deleted;
+        }
+
 
     }
 

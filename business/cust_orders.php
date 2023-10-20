@@ -219,14 +219,14 @@ $product = $prod->get_orders();
                             <td><?php echo $prodt['order_custname']; ?></td>   
                             <td><?php echo $prodt['order_custaddress']; ?></td> 
                             <td><?php echo $prodt['order_qty']; ?></td>
-                            <td id="td_call"><?php echo $prodt['order_custphone']; ?></td>
+                            <td><?php echo $prodt['order_custphone']; ?></td>
                             <td><?php echo $prodt['order_date']; ?></td>
                             <td style="display:flex";>
                             <form action="process/deleteorder_process.php" method="post">
                                 <input type="hidden" name="order_id" value="<?php echo $prodt['order_id']; ?>">
                                 <button type="submit" style="background-color:red; border: red; padding: 5px; border-radius: 6%; color: white;" classs=" btn-sm btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete order</button>
                             </form> &nbsp;
-                                <button type="submit" style="background-color:green; border: green; padding: 7px; border-radius: 8%; color: white;" id="btn_call" name="delete_btn"> phone </button> &nbsp;
+                                <button type="submit" style="background-color:green; border: green; padding: 7px; border-radius: 8%; color: white;" name="delete_btn"> phone </button> &nbsp;
                             </td>
                             </tr>
                         <?php } ?>

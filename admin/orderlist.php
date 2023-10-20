@@ -237,7 +237,7 @@ $product = $prod->get_orders();
                             </tr>
                         </thead>
                         <tbody>
-                                    <!-- This is done to create and increase a book numbering -->
+                        <!-- This is done to create and increase a book numbering -->
                         <?php $num = 1; ?>
                         <?php foreach($product as $prodt){ ?>
                             <tr>
@@ -256,11 +256,8 @@ $product = $prod->get_orders();
                             </td>
                             </tr>
                         <?php } ?>
-                        
-
                         </tbody>
                         </table>
-
                             </div>
                             </div>
                         </div>

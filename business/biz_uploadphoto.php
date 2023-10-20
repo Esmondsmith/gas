@@ -2,7 +2,6 @@
     session_start();
     require_once "partials/navbar.php";
     require_once "classes/Business.php";
-    require_once "guards/guard.php";
 
 
     if(isset($_SESSION['biz_id'])){

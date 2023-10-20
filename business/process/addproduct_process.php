@@ -2,7 +2,7 @@
 session_start();
 require_once "../classes/Product.php";
 
- if($_POST){
+if($_POST){
     if(isset($_POST['addprod-btn'])){
 
         $prod_name = $_POST['prod_name'];
@@ -64,7 +64,9 @@ require_once "../classes/Product.php";
     }
 
 
- }
+} else {
+    header("location:business_login.php");
+}
 
 
 

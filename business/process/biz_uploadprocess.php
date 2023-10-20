@@ -59,6 +59,8 @@ if($_POST){
             } 
 
     }
+} else {
+    header("location: business_login.php");
 }
 
 

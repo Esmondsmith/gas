@@ -142,7 +142,10 @@ class Product extends Db{
 //class end!
 
             // $prd = new Product();
-            // echo $prd->add_order("charles doe", "gas palace 4th street for all homes", 3, 948575784, 8);
+            // echo $prd->add_product("LPG2", 20000, "gas for all homes", "gas.png", 3, 8);
+
+            // $ord = new Product();
+            // echo $ord->add_order("James Bello", "Lagoje str, off tofa", 3, 9837335353, 8);
 
 
 ?>

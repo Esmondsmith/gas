@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-require_once "../classes/Product.php";
+require_once "../classes/Admin.php";
 
 
     if($_POST){
@@ -8,7 +8,7 @@ require_once "../classes/Product.php";
 
             $order_id = $_POST['order_id'];
 
-            $ord = new Product();
+            $ord = new Admin();
             $is_deleted = $ord->deleteorder($order_id);
                 if($is_deleted){
                     //You can save deleted successfully inside SESSION and display on Productlist.php page

@@ -413,7 +413,7 @@ require_once "classes/Category.php";
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Date Added</th>  
-                            <th scope="col">Delete &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Edit</th>
+                            <th scope="col">Delete</th>
                                 </strong>
                             </tr>
                         </thead>
@@ -432,8 +432,6 @@ require_once "classes/Category.php";
                                 <input type="hidden" name="cat_id" value="<?php echo $cat['cat_id']; ?>">
                                 <button type="submit" style="background-color:red; border: red; padding: 7px; border-radius: 6%; color: white;" classs=" btn-md btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete</button>
                             </form>
-                                <!-- Below, we are using query string to pass the id of book while editing -->
-                                <a href="editproduct.php?id=<?php echo $cat['cat_id']; ?>" class='btn btn-md btn-success mx-3'><i class='fa fa-edit'>&nbsp</i> Edit</a>
                             </td>
                             </tr>
 

@@ -134,7 +134,7 @@ $states = $sta->fetch_all_states();
                         <a class="small" href="admin/admin_reg.php">Forgot Password?</a>
                     </div>
                     <div class="text-center">
-                        <a class="small" href="login.php">Already have an account? Login!</a>
+                        <a class="small" href="user_login.php">Already have an account? Login!</a>
                     </div>
                 </div>
             </div>

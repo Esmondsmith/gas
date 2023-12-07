@@ -76,7 +76,7 @@ h1{
 /*order-bar*/
 .div-vendor {
 	height: 100px;
-	background-color:#FF632D; 
+	background-color:#FF632D
 }
 
 .div-vendor1{
@@ -91,8 +91,8 @@ h1{
 	top: 30px;
 }
 .keep-on-cooking:hover{
-	font-size: 26px;
-
+	font-size: 20px; 
+	margin-left: 5px; 
 }
 
 .ordernow{
@@ -109,7 +109,7 @@ h1{
 }
 
 .ordernow:hover{
-	color:#FACA38;
+	color:#FF632D !important;
 	box-shadow: 0 px 5px;
 }
 

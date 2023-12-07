@@ -40,7 +40,7 @@ $user = null;
 if(isset($_SESSION['user_id'])){
   $user_id = $_SESSION['user_id'];
   $userr = new User();
-  $user = $userr -> fetch_user_details($user_id);
+  $user = $userr-> fetch_user_details($user_id);
 }
 
 

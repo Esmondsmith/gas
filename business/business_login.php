@@ -18,6 +18,7 @@ session_start();
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -27,6 +28,8 @@ session_start();
     <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
     <link href="assets/css/styles2.css" rel="stylesheet" type="text/css">
     <link href="assets/animate.css" rel="stylesheet" type="text/css">
+    <link  href="assets/fontawesom/css/all.css" rel="stylesheet" type="text/css">
+   
 
 </head>
 
@@ -63,8 +66,9 @@ session_start();
                                             <input type="email" name="biz_login_email" class="form-control"
                                                 placeholder="Enter Email Address...">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" name="biz_login_pass" class="form-control" placeholder="Password">
+                                        <div class="form-group d-flex">
+                                            <input type="password" name="biz_login_pass" class="form-control w-80" id="pass1" placeholder="Password">
+                                            <button class="btn btn-info" type="button" id="btn13"><i class="fa-sharp fa-solid fa-eye"></i></button>
                                         </div>
                                         <button name="biz_login_btn" class="btn btn-primary btn-user btn-block mb-4">Login </button>
                                         <div class="text-center mb-2">
@@ -81,17 +85,6 @@ session_start();
                                     <hr>
                                     <div class="text-center">
                                         <a class="medium" href="forgot-password.php">Forgot Password?</a>
-                                    <!-- </div>
-                                    <div class="text-center">
-                                        Do not have an Account?
-                                    </div>
-                                    <div class="text-center m">
-                                    <div class="text-center">
-                                        <a class="medium" href="vendor.php">As a Vendor!</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="medium" href="register.php">As a User!</a>
-                                    </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -101,3 +94,24 @@ session_start();
             </div>
         </div>
     </div>
+
+    <script src="assets/bootstrap/js/bootstrap.bundle.js" crossorigin="anonymous"></script> 
+
+    <script src="assets/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+        $('#btn13').click(function(){
+          var pwd =  $('#pass1').attr('type')
+            if (pwd == 'password'){
+                $('#pass1').attr('type', 'text')
+                $('#btn13').html('<i class="fa-sharp fa-solid fa-eye-slash"></i>')
+            } else{
+                $('#pass1').attr('type', 'password')
+                $('#btn13').html(' <i class="fa-sharp fa-solid fa-eye"></i>')
+               
+            }
+        })
+    })
+
+	</script>	

@@ -1,10 +1,14 @@
+<?php
+$title = "Gas Ordering System";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>project</title>
+    <title>Project- <?php echo $title ?></title>
     <link  href="user_assets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
     <link href="user_assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="user_assets/css/styles.css" rel="stylesheet" type="text/css">
@@ -88,7 +92,7 @@
           <div class="col-md-6">
               <h2 class= "keep-on-cooking">KEEP ON COOKING WITH GAZEASY</h2>
           </div>
-          <div class="col-md-6"><a href="#" class="ordernow">
+          <div class="col-md-6"><a href="vendors.php" class="ordernow">
               <strong>ORDER NOW</strong></a>
           </div>
       </div>

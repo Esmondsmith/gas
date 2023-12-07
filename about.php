@@ -1,10 +1,13 @@
+<?php
+$title = "About Page";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About page</title>
+    <title>Project- <?php echo $title ?></title>
     <link  href="user_assets/fontawesome/css/all.css" rel="stylesheet" type="text/css">
     <link href="user_assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="user_assets/css/styles.css" rel="stylesheet" type="text/css">

@@ -4,8 +4,6 @@ require_once "partials/navbar.php";
 
 // print_r($_SESSION);
 
-
-
 ?>
 
 <!DOCTYPE html>

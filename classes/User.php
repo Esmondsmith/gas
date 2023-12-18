@@ -24,7 +24,7 @@ error_reporting(E_ALL);
             $stmt->execute();
             //The rowCount() is used to check the database if such email already exist in it.
             $user_count = $stmt->rowCount();
-            //IF user_count is greater than 0, if means the user already exist in the DB.
+            //IF user_count is greater than 0, it means the user already exist in the DB.
             if($user_count > 0){
                 return "Error, email not available";
                 exit();

@@ -230,7 +230,7 @@ $product = $prod->fetch_all_products();
                                 
                             <form action="process/deleteprod_process.php" method="post">
                                 <input type="hidden" name="product_id" value="<?php echo $prodt['product_id']; ?>">
-                                <button type="submit" style="background-color:red; border: red; padding: 7px; border-radius: 6%; color: white;" classs=" btn-sm btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete</button>
+                                <button type="submit" onclick="return confirm('Do you really want to delete this record?');" style="background-color:red; border: red; padding: 7px; border-radius: 6%; color: white;" classs=" btn-sm btn-danger deletebtn" name="delete_btn"><i class='fa fa-trash'></i> delete</button>
                             </form>
                                 <!-- Below, we are using query string to pass the id while editing -->
                                 <a href="editproduct.php?id=<?php echo $prodt['product_id']; ?>" class='btn btn-sm btn-success mx-3'><i class='fa fa-edit'>&nbsp</i> Edit</a>

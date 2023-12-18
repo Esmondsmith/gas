@@ -9,7 +9,7 @@
         if(isset($_POST['login_btn'])){
             
             $user_email = sanitize($_POST['login_email']);
-            $user_password = sanitize($_POST['login_password']);
+            $user_password = $_POST['login_password'];
 
             if(empty($user_email) && empty($user_password)){
                 $_SESSION['login_error'] = "Please fill all the fields";
